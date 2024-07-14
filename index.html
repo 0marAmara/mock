@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/3f6593205c.js" crossorigin="anonymous"></script>
+    <title>Dashboard</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-size: 1.2rem;
+            font-family: sans-serif;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        header {
+            background-color: #1D2733;
+            width: 100%;
+            top: 0;
+            position: sticky;
+            left: 0;
+        }
+
+        header > ul {
+            color: white;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            list-style: none;
+            padding: 0.5rem 0.5rem;
+            align-items: center;
+        }
+
+        ul > li > button {
+            background-color: transparent;
+            color: white;
+            font-weight: bold;
+            padding: 0.3rem 0px;
+            box-shadow: none;
+            border: none;
+        }
+
+        .current {
+            background-color: #F8F8F8;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0.5rem 0.5rem;
+            border-bottom: solid gray 1px;
+            align-items: center;
+        }
+
+        .current > div > h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .current > div > p {
+            font-size: 16px;
+        }
+
+        .current > div > button {
+            background-color: transparent;
+            color: #4479AF;
+            border: 2px solid rgb(68, 121, 175);
+            border-radius: 1px;
+            font-size: 16px;
+            padding: 0.3rem 0.7rem;
+        }
+
+        .view {
+            padding: 1rem 0.5rem;
+        }
+
+        .view > h3 {
+            padding: 0 0 0.2rem;
+            font-size: 20px;
+        }
+
+        .cont {
+            border: solid #b9b9b9 1px;
+            background-color: white;
+        }
+
+        .block {
+            display: grid;
+            padding: 0.3rem;
+            justify-content: start;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            width: max-content;
+            font-weight: bold;
+            grid-gap: 15px;
+        }
+
+        .l {
+            text-align: right;
+            font-size: 15px;
+            color: #5d5d5d;
+        }
+
+        .r {
+            font-size: 15px;
+        }
+
+        .container {
+            padding: 0 0.5rem;
+        }
+
+        .nOfRows {
+            font-size: 15px;
+            color: black;
+            font-weight: bold;
+            text-align: right;
+            display: block;
+            padding-bottom: 0.5rem;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border: solid 1px #ababab;
+            padding: 5px 0px;
+            border-bottom: none;
+            padding: 0.6rem 0.3rem;
+        }
+
+        .head {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .details > .row {
+            display: grid;
+            grid-gap: 5px;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .final {
+            border-bottom: solid 1px #5d5d5d;
+        }
+
+        .right > button {
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <ul>
+        <li>
+            <button><</button>
+        </li>
+        <li>View Grades</li>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+    </ul>
+    <div class="current">
+        <div>
+            <h3>2023 - 2024 Semester 2</h3>
+            <p>Undergraduate</p>
+        </div>
+        <div>
+            <button>Change</button>
+        </div>
+    </div>
+</header>
+
+<div class="view">
+    <h3>View Grades</h3>
+    <div class="cont">
+        <div class="block">
+            <p class="l">Cumulative GPA</p>
+            <p class="r">2.868</p>
+            <p class="l">Semester GPA</p>
+            <p class="r">3.226</p>
+            <p class="l">Academic Standing</p>
+            <p class="r">very good standing</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="nOfRows">3 rows</div>
+    <div class="cols">
+        <div class="item">
+            <div class="left">
+                <div class="head">BMS 304 - BMS304</div>
+                <div class="details">
+                    <div class="row">
+                        <div class="l">Units</div>
+                        <div class="r">8.00</div>
+                    </div>
+                    <div class="row">
+                        <div class="l">Grading</div>
+                        <div class="r">Graded</div>
+                    </div>
+                    <div class="row">
+                        <div class="l">Grade</div>
+                        <div class="r">B+</div>
+                    </div>
+                    <div class="row">
+                        <div class="l">Grade Points</div>
+                        <div class="r">26.400</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <button class="viewSub">></button>
+            </div>
+        </div>
+        <div class="item">
+            <div class="left">
+                <div class="head">BMS 305 - BMS305</div>
+                <div class="details">
+                    <div class="row">
+                        <div class="l">Units</div>
+                        <div class="r">7.00</div>
+                    </div>
+                    <div class="row">
+                        <div class="l">Grading</div>
+                        <div class="r">Graded</div>
+                    </div>
+                    <div class="row">
+                        <div class="l">Grade</div>
+                        <div class="r">B+</div>
+                    </div>
+                    <div class="row">
+                        <div class="l">Grade Points</div>
+                        <div class="r">23.100</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <button class="viewSub">></button>
+            </div>
+        </div>
+        <div class="item final">
+            <div class="left">
+                <div class="head">CMS 302 - CMS302</div>
+                <div class="details">
+                    <div class="row">
+                        <div class="l">Units</div>
+                        <div class="r">2.00</div>
+                    </div>
+                    <div class="row">
+                        <div class="l">Grading</div>
+                        <div class="r">Graded</div>
+                    </div>
+                    <div class="row">
+                        <div class="l">Grade</div>
+                        <div class="r">B-</div>
+                    </div>
+                    <div class="row">
+                        <div class="l">Grade Points</div>
+                        <div class="r">5.400</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <button class="viewSub">></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal structure -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modalText">Subject: </p>
+        <p id="modalGrade">Grade: </p>
+        <p id="modalGradePoints">Grade Points: </p>
+    </div>
+</div>
+
+
+<script>
+    const btns = document.querySelectorAll('.viewSub');
+    const subjects = [
+        {name: "GIT", grade: "B+", gradePoints: "26.400"},
+        {name: "Urogenital module", grade: "B+", gradePoints: "23.100"},
+        {name: "Clinical Integrated Module", grade: "B-", gradePoints: "5.400"}
+    ];
+    const modal = document.getElementById("myModal");
+    const modalText = document.getElementById("modalText");
+    const modalGrade = document.getElementById("modalGrade");
+    const modalGradePoints = document.getElementById("modalGradePoints");
+    const span = document.getElementsByClassName("close")[0];
+
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', (ev) => {
+            modalText.innerText = `Subject: ${subjects[i].name}`;
+            modalGrade.innerText = `Grade: ${subjects[i].grade}`;
+            modalGradePoints.innerText = `Grade Points: ${subjects[i].gradePoints}`;
+            modal.style.display = "block";
+        });
+    }
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
