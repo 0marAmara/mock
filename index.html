@@ -100,7 +100,7 @@
             justify-content: start;
             grid-template-rows: 1fr 1fr;
             grid-template-columns: 1fr 1fr;
-            width: max-content;
+            width: 100%;
             font-weight: bold;
             grid-gap: 15px;
         }
@@ -201,6 +201,21 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        .student-info {
+            display: grid;
+            margin: 0 auto;
+            padding: 1rem 0.5rem;
+            justify-content: start;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            width: max-content;
+            font-weight: bold;
+            grid-gap: 15px;
+            border: solid #b9b9b9 1px;
+            background-color: white;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -223,6 +238,16 @@
     </div>
 </header>
 
+<div class="view">
+    <h3>Student Information</h3>
+    <div class="cont">
+        <div class="block">
+            <p class="l">Student ID</p>
+            <p class="r">221100171</p>
+            <p class="l">Name</p>
+            <p class="r">Mohamed Ali Elkerdawi</p></div>
+    </div>
+</div>
 <div class="view">
     <h3>View Grades</h3>
     <div class="cont">
